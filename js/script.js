@@ -6,19 +6,27 @@ audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 oscillator = audioCtx.createOscillator();
 
 oscillator.type = 'triangle';
+oscillator.start();
+
 
 function toneShift() {
 
   oscillator.frequency.value = parseInt(toneArr[0]);
 
-
-  oscillator.connect(audioCtx.destination);
-  oscillator.start();
-  oscillator.stop(audioCtx.currentTime + 1);
-
 };
 
 $(function () {
+
+  var timerID;
+
+  function delayUnplug () {
+    timerID = window.setTimeout(unplug, 500);
+  };
+
+  function unplug () {
+    oscillator.disconnect(audioCtx.destination);
+    timerID;
+  };
 
   function show () {
     $('#center-column').append(this.id).fadeIn(500);
@@ -26,9 +34,11 @@ $(function () {
 
 
   $('button').click(function () {
-    playArr.push(this.id);
-    play();
+    toneArr.push(this.id);
+    toneShift();
+    oscillator.connect(audioCtx.destination);
+    delayUnplug();
     show();
-    playArr = [];
+    toneArr = [];
   });
 });
