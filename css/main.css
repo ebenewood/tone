@@ -4,14 +4,11 @@ body {
   padding: 0;
 }
 
-header {
-  width: 0 auto;
-}
-
-h3 {
+#header {
   text-align: center;
   font-family: 'Source Sans Pro';
   font-weight: 200;
+  margin: 5% 0 7% 0;
 }
 
 #wrap {
@@ -23,6 +20,15 @@ h3 {
 #left-column {
   float: left;
   width: 20%;
+}
+
+#center-column {
+  width: 50%;
+  margin: 0 0 0 10%;
+  padding: 0;
+  font-family: 'Source Sans Pro';
+  display: inline-block;
+
 }
 
 #right-column {
