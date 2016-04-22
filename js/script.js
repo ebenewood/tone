@@ -6,7 +6,7 @@ audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 oscillator = audioCtx.createOscillator();
 
 oscillator.type = 'triangle';
-oscillator.start();
+oscillator.noteOn(0);
 
 
 function toneShift() {
