@@ -5,9 +5,13 @@ audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 // create Oscillator node
 oscillator = audioCtx.createOscillator();
 
-oscillator.type = 'triangle';
-oscillator.start();
-
+if ( isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0) {
+  oscillator.type = 'triangle';
+  oscillator.noteOn(0);
+} else {
+  oscillator.type = 'triangle';
+  oscillator.start();
+};
 
 function toneShift() {
 
